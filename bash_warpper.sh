@@ -11,12 +11,13 @@ check_vulnerabilities(){
 
 send_mail(){
     body="/tmp/body.txt"
+    to = "repo_system@outlook.com"
     cat $body | grep "Warning: found potentail security hole" > /dev/null
     if [ $? -eq "0" ]; then
         echo -e "\e[92mSending mail --->\e[0m"
-        cat $body | mutt -s "Security Groups vulnerabilities issues" repo_system@outlook.com
+        cat $body | mutt -s "Security Groups vulnerabilities issues" $to
     else
-        echo "No Security Groups vulnerabilities issues is founds" | mutt -s "Security Groups vulnerabilities issues" repo_system@outlook.com
+        echo "No Security Groups vulnerabilities issues is founds" | mutt -s "Security Groups vulnerabilities issues" $to
     fi
 }
 #devops@otoma.com
