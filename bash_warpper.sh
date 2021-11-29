@@ -11,7 +11,8 @@ check_vulnerabilities(){
 
 send_mail(){
     body="/tmp/body.txt"
-    to = "repo_system@outlook.com"
+    #devops@otoma.com
+    to="devops@otoma.com"
     cat $body | grep "Warning: found potentail security hole" > /dev/null
     if [ $? -eq "0" ]; then
         echo -e "\e[92mSending mail --->\e[0m"
@@ -20,7 +21,7 @@ send_mail(){
         echo "No Security Groups vulnerabilities issues is founds" | mutt -s "Security Groups vulnerabilities issues" $to
     fi
 }
-#devops@otoma.com
+
 main(){
     # First Check to validate if mail service is installd!
     dpkg -l mutt postfix > /dev/null
